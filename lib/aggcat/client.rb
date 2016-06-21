@@ -1,7 +1,7 @@
 module Aggcat
   class Client < Aggcat::Base
 
-    BASE_URL = 'https://financialdatafeed.platform.intuit.com/rest-war/v1'
+    BASE_URL = 'https://financialdatafeed.platform.intuit.com/v1'
 
     def initialize(options={})
       raise ArgumentError.new('customer_id is required for scoping all requests') if options[:customer_id].nil? || options[:customer_id].to_s.empty?
@@ -113,6 +113,7 @@ module Aggcat
     private
 
     def request(http_method, path, *options)
+      puts "method: #{http_method} request: #{BASE_URL}#{path}"
       tries = 0
       begin
         response = oauth_client.send(http_method, BASE_URL + path, *options)
