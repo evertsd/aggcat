@@ -65,7 +65,8 @@ module Aggcat
       http.set_debug_output($stdout) if @verbose
       response = http.request(request)
       params = CGI::parse(response.body)
-      
+      puts "raw response: #{response.body}"
+      puts "params: #{params}"
       token = [params['oauth_token'][0], params['oauth_token_secret'][0]]
       puts "token: #{token}"
       token
