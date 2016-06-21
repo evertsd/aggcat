@@ -50,6 +50,7 @@ module Aggcat
         @oauth_token = new_token(saml_message(@customer_id))
         @oauth_token_expire_at = now + 9 * 60 # 9 minutes
       end
+      puts "@oauth_token #{@oauth_token}"
       @oauth_token
     end
 
